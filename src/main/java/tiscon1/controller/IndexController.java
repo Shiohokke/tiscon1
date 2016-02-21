@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tiscon1.exception.SystemException;
 import tiscon1.repository.CategoryRepository;
-
+import org.springframework.cache.annotation.Cacheable;
 /**
  * @author kawasima
  */
@@ -19,6 +19,7 @@ public class IndexController {
     CategoryRepository categoryRepository;
 
     @RequestMapping("/")
+    @Cacheable("model")
     public String index(Model model) {
         try {
             model.addAttribute("movieRank", categoryRepository.findTop10(MOVIE_ID, null));

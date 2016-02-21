@@ -23,3 +23,11 @@
 #content .product .text h3.text-category-list-title {
     height : 60px;
 }
+
+div#main-slider {
+    width: 640px;
+    height : 323px;
+    margin-left:auto;           /* IE以外用の中央寄せ */
+    margin-right:auto;
+
+}

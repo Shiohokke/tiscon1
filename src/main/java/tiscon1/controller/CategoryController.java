@@ -1,6 +1,7 @@
 package tiscon1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class CategoryController {
     GenreRepository genreRepository;
 
     @RequestMapping(value = {"/category", "/my/category"}, method = RequestMethod.GET)
+    @Cacheable("model")
     public String category(@RequestParam("genreId") String genreId, @RequestParam("subgenreId") String subgenreId, Model model) {
         model.addAttribute("genreId", genreId);
         model.addAttribute("subgenreId", subgenreId);

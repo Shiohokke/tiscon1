@@ -120,7 +120,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="/" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="/">
                     <img src="/img/TISCON_LOGO.png" alt="TISCON logo" class="hidden-xs">
                     <img src="/img/TISCON_LOGO.png" alt="TISCON logo" class="visible-xs"><span class="sr-only">go to homepage</span>
                 </a>

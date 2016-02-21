@@ -13,10 +13,18 @@ import tiscon1.interceptor.PrincipalInterceptor;
 import tiscon1.repository.GenreRepository;
 import tiscon1.repository.impl.CachedGenreRepository;
 
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.support.SimpleCacheManager;
+
+import java.util.Arrays;
+
 /**
  * @author kawasima
  */
 @Configuration
+@EnableCaching
 public class InterceptorConfiguration extends WebMvcConfigurerAdapter {
 
     @Autowired
@@ -30,5 +38,13 @@ public class InterceptorConfiguration extends WebMvcConfigurerAdapter {
         registry.addInterceptor(new AuthzInterceptor())
                 .addPathPatterns("/my/*");
         registry.addInterceptor(layoutInterceptor);
+    }
+
+    @Bean
+    CacheManager cacheManager() { // (2)
+        SimpleCacheManager cacheManager = new SimpleCacheManager(); // (3)
+        cacheManager.setCaches(Arrays.asList(
+                new ConcurrentMapCache("model")));
+        return cacheManager;
     }
 }

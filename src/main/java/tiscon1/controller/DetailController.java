@@ -1,6 +1,7 @@
 package tiscon1.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class DetailController {
     GenreRepository genreRepository;
 
     @RequestMapping(value = {"/detail", "/my/detail"}, method = RequestMethod.GET)
+    @Cacheable("model")
     public String detail(@RequestParam("genreId") String genreId, @RequestParam("subgenreId") String subgenreId, @RequestParam("itemId") String itemId, Model model) {
         model.addAttribute("genreId", genreId);
         model.addAttribute("subgenreId", subgenreId);

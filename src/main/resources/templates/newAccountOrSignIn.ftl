@@ -29,9 +29,9 @@
                             <#assign error><#if spring.status.error> has-error</#if></#assign>
 
                             <div class="form-group${error}">
-                                <label for="name">Name</label>
+                                <label for="name">Name (1文字以上入力)</label>
                                 <input type="text" class="form-control" id="name" name="name" value="${spring.stringStatusValue}">
-                                <@spring.showErrors "<br/>", "help-block"/>
+                                <@spring.showErrors "<br/>", "color:red"/>
                             </div>
 
                             <@spring.bind "accountRegisterForm.email"/>
@@ -40,7 +40,7 @@
                             <div class="form-group${error}">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" id="email" name="email" value="${spring.stringStatusValue}">
-                                <@spring.showErrors "<br/>", "help-block"/>
+                                <@spring.showErrors "<br/>", "color:red"/>
                             </div>
 
                             <@spring.bind "accountRegisterForm.password"/>
@@ -48,10 +48,14 @@
 
                             <div class="form-group${error}">
 
-                                <label for="password">Password</label>
+                                <label for="password">Password (8文字以上かつ半角英数字の小文字大文字数字を１つ以上組み合わせて入力)</label>
                                 <input type="password" class="form-control" id="password" name="password" value="${spring.stringStatusValue}">
-                                <@spring.showErrors "<br/>", "help-block"/>
+                                <@spring.showErrors "<br/>", "color:red"/>
+                                <!-- help-block -->
                             </div>
+
+
+
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
                             </div>
